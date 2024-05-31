@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "es6",
+    "noImplicitAny": true,
+    "jsx": "react",
+    "sourceMap": true
+  },
+  "exclude": ["node_modules"]
+}
