@@ -157,3 +157,22 @@ export const loginUser = CatchAsyncError(
     }
   }
 );
+
+// Logout User
+
+export const logoutUser = CatchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      res.cookie("access_token", "", { maxAge: 1 });
+      res.cookie("refresh_token", "", { maxAge: 1 });
+
+      res.status(200).json({
+        success:true,
+        message: "Logged out successfully"
+      })
+
+    } catch (error: any) {
+      return next(new ErrorHandler("Please enter email and password", 400));
+    }
+  }
+);
