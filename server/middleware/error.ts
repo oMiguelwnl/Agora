@@ -8,7 +8,7 @@ export const ErrorMiddleware = (
   next: NextFunction
 ) => {
   err.statusCode = err.statusCode || 500;
-  err.message = err.message || "Internal Server Error";
+  err.message = err.message || "Internal server error";
 
   if (err.name === "CastError") {
     const message = `Resource not found. Invalid: ${err.path}`;
@@ -21,12 +21,12 @@ export const ErrorMiddleware = (
   }
 
   if (err.name === "JsonWebTokenError") {
-    const message = `Json Web Token is invalid, Try again`;
+    const message = `Json web token is invalid, try again`;
     err = new ErrorHandler(message, 400);
   }
 
   if (err.name === "TokenExpiredError") {
-    const message = `Json Web Token is expired, Try again`;
+    const message = `Json web token is expired, try again`;
     err = new ErrorHandler(message, 400);
   }
 

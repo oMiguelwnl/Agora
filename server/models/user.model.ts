@@ -14,7 +14,7 @@ export interface IUser extends Document {
     url: string;
   };
   role: string;
-  idVerified: boolean;
+  isVerified: boolean;
   courses: Array<{ courseId: string }>;
   comparePassword: (password: string) => Promise<boolean>;
   SignAccessToken: () => string;
@@ -34,13 +34,12 @@ const userSchema: Schema<IUser> = new mongoose.Schema(
         validator: function (value: string) {
           return emailRegexPattern.test(value);
         },
-        message: "Please enter a valid email",
+        message: "please enter a valid email",
       },
       unique: true,
     },
     password: {
       type: String,
-      required: [true, "Please enter your password"],
       minlength: [6, "Password must be at least 6 characters"],
       select: false,
     },
@@ -52,7 +51,7 @@ const userSchema: Schema<IUser> = new mongoose.Schema(
       type: String,
       default: "user",
     },
-    idVerified: {
+    isVerified: {
       type: Boolean,
       default: false,
     },
@@ -74,11 +73,15 @@ userSchema.pre<IUser>("save", async function (next) {
 });
 
 userSchema.methods.SignAccessToken = function () {
-  return jwt.sign({ id: this._id }, process.env.ACCESS_TOKEN || "");
+  return jwt.sign({ id: this._id }, process.env.ACCESS_TOKEN || "", {
+    expiresIn: "5m",
+  });
 };
 
 userSchema.methods.SignRefreshToken = function () {
-  return jwt.sign({ id: this._id }, process.env.REFRESH_TOKEN || "");
+  return jwt.sign({ id: this._id }, process.env.REFRESH_TOKEN || "", {
+    expiresIn: "3d",
+  });
 };
 
 userSchema.methods.comparePassword = async function (
@@ -87,6 +90,6 @@ userSchema.methods.comparePassword = async function (
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-const userModel: Model<IUser> = mongoose.model<IUser>("User", userSchema);
+const userModel: Model<IUser> = mongoose.model("User", userSchema);
 
 export default userModel;
