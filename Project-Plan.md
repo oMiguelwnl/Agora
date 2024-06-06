@@ -2,23 +2,23 @@
 
 ## Planning design
 
-    1. Software design
-    2. Technology brief
-    3. code editor overview
-    4. project server setup
-    5. database, cloudinary ,redis connection
+    <!-- 1. Software design -->
+    <!-- 2. Technology brief -->
+    <!-- 3. code editor overview -->
+    <!-- 4. project server setup -->
+    <!-- 5. database, cloudinary , redis connection -->
 
 ## Handle Erros, User Authentication
 
-    6. handle errors
-    7. user model design
-    8. user registration
-    9. user authentication
-    10. user activation
-    11. user login,logout
-    12. user authorization
-    13. generate new token, user social authentication, get user info
-    13. update user info, password, avatar
+    <!-- 6. handle errors -->
+    <!-- 7. user model design -->
+    <!-- 8. user registration -->
+    <!-- 9. user authentication -->
+    <!-- 10. user activation -->
+    <!-- 11. user login,logout -->
+    <!-- 12. user authorization -->
+    <!-- 13. generate new token, user social authentication, get user info -->
+    <!-- 13. update user info, password, avatar -->
 
 ## Course model and course creation
 
