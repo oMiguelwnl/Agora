@@ -23,9 +23,9 @@
 ## Course model and course creation
 
     <!-- 14. course model design -->
-    15. create course, edit course
-    16. get single and all courses -- without purchasing
-    17. get course content, get user accessible all courses -- only for valid user
+    <!-- 15. create course, edit course -->
+    <!-- 16. get single and all courses -- without purchasing -->
+    <!-- 17. get course content, get user accessible all courses -- only for valid user -->
     18. create question, add reply in question
     19. add review in course
 
