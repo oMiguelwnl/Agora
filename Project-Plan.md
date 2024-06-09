@@ -26,12 +26,12 @@
     <!-- 15. create course, edit course -->
     <!-- 16. get single and all courses -- without purchasing -->
     <!-- 17. get course content, get user accessible all courses -- only for valid user -->
-    18. create question, add reply in question
-    19. add review in course
+    <!-- 18. create question, add reply in question -->
+    <!-- 19. add review in course -->
 
 ## Order and Notifications maintaining
 
-    20.notification and order model
+    <!-- 20.notification and order model -->
     21. create order
     22. get all notifications, update notification status
     23. delete read notification -- with crone after a certain time
