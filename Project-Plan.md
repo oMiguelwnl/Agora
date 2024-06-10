@@ -34,7 +34,7 @@
     <!-- 20.notification and order model -->
     <!-- 21. create order -->
     <!-- 22. get all notifications, update notification status -->
-    23. delete read notification -- with crone after a certain time
+    <!-- 23. delete read notification -- with Cron after a certain time -->
 
 ## Admin dashboard an analytics
 
