@@ -32,7 +32,7 @@
 ## Order and Notifications maintaining
 
     <!-- 20.notification and order model -->
-    21. create order
+    <!-- 21. create order -->
     22. get all notifications, update notification status
     23. delete read notification -- with crone after a certain time
 
