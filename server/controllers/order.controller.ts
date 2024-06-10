@@ -8,7 +8,7 @@ import path from "path";
 import ejs from "ejs";
 import sendMail from "../utils/sendMail";
 import NotificationModel from "../models/notification.model";
-import { newOrder } from "../services/order.service";
+import { geAllOrdersService, newOrder } from "../services/order.service";
 import { redis } from "../utils/redis";
 
 export const createOrder = CatchAsyncError(
@@ -90,6 +90,16 @@ export const createOrder = CatchAsyncError(
       newOrder(data, res, next);
     } catch (error: any) {
       return next(new ErrorHandler(error.message, 500));
+    }
+  }
+);
+
+export const getAllOrders = CatchAsyncError(
+  async (res: Response, req: Request, next: NextFunction) => {
+    try {
+      geAllOrdersService(res);
+    } catch (error: any) {
+      return next(new ErrorHandler(error.message, 400));
     }
   }
 );

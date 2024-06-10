@@ -30,8 +30,6 @@ courseRouter.put(
 
 courseRouter.get("/get-course/:id", getSingleCourse);
 
-courseRouter.get("/get-courses", getAllCourses);
-
 courseRouter.get("/get-course-content/:id", isAuthenticated, getCourseByUser);
 
 courseRouter.put("/add-question", isAuthenticated, addQuestion);
@@ -45,6 +43,13 @@ courseRouter.put(
   isAuthenticated,
   authorizeRoles("admin"),
   addReplyToReview
+);
+
+courseRouter.get(
+  "/get-courses",
+  isAuthenticated,
+  authorizeRoles("admin"),
+  getAllCourses
 );
 
 export default courseRouter;

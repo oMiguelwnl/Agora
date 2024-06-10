@@ -11,3 +11,12 @@ export const createCourse = CatchAsyncError(
     });
   }
 );
+
+export const geAllCoursesService = async (res: Response) => {
+  const courses = await CourseModel.find().sort({ created: -1 });
+
+  res.status(201).json({
+    success: true,
+    courses,
+  });
+};

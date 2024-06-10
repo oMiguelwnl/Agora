@@ -11,3 +11,12 @@ export const newOrder = CatchAsyncError(
     });
   }
 );
+
+export const geAllOrdersService = async (res: Response) => {
+  const orders = await OrderModel.find().sort({ created: -1 });
+
+  res.status(201).json({
+    success: true,
+    orders,
+  });
+};
