@@ -38,7 +38,7 @@
 
 ## Admin dashboard an analytics
 
-    24. get all users, courses, orders
+    <!-- 24. get all users, courses, orders -->
     25. add and get members in admin dashboard
     26. delete course, banned use
     27. get last 28 days users, orders, notifications for last 1 year
