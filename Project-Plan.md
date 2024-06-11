@@ -43,7 +43,8 @@
     <!-- 26. delete course, banned use -->
     <!-- 28. Layout Model design -->
     <!-- 29. Create FAQ, Hero and Categories -->
-    30. get last 28 days users, orders, notifications for last 1 year
+    <!-- 30. Edit FAQ, Hero and Categories -->
+    <!-- 31. get last 28 days users, orders, notifications for last 1 year -->
 
 # Technology => LMS Application
 
