@@ -56,3 +56,6 @@
     5. Redis for maintains cash
     5. Redux for state management
     7. Tailwind css for styling
+    8. Material Ui
+    9. Formik
+    10. Yup
