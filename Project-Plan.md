@@ -60,3 +60,4 @@
     9. Formik
     10. Yup
     11. Toast
+    12. NextAuth
