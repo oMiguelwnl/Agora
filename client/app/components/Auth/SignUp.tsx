@@ -11,7 +11,7 @@ import { FcGoogle } from "react-icons/fc";
 import { styles } from "../../../app/styles/style";
 import { useTheme } from "next-themes";
 import { useRegisterMutation } from "@/redux/features/auth/authApi";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 type Props = {
   setRoute: (route: string) => void;

@@ -78,9 +78,7 @@ const Verification: FC<Props> = ({ setRoute }) => {
   return (
     <div>
       <h1 className={`${styles.title}`}>Verify Your Account</h1>
-
       <br />
-
       <div className="w-full flex items-center justify-center mt-2">
         <div className="w-[80px] h-[80px] rounded-full bg-[#497DF2] flex items-center justify-center">
           <VscWorkspaceTrusted size={40} />
@@ -88,7 +86,6 @@ const Verification: FC<Props> = ({ setRoute }) => {
       </div>
       <br />
       <br />
-
       <div className="m-auto flex items-center justify-around">
         {Object.keys(verifyNumber).map((key, index) => (
           <input
@@ -98,7 +95,7 @@ const Verification: FC<Props> = ({ setRoute }) => {
             className={`w-[65px] h-[65px] bg-transparent border-[3px] rounded-[10px] flex items-center text-black dark:text-white justify-center text-[18px] font-Poppins outline-none text-center ${
               invalidError
                 ? "shake border-red-500"
-                : "dark:border-whi te border-[#0000004a]"
+                : "dark:border-white border-[#0000004a]"
             }`}
             placeholder=""
             maxLength={1}
@@ -116,7 +113,7 @@ const Verification: FC<Props> = ({ setRoute }) => {
       </div>
       <br />
       <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">
-        Go back to sign in?
+        Go back to sign in?{" "}
         <span
           className="text-[#2190ff] pl-1 cursor-pointer"
           onClick={() => setRoute("Login")}

@@ -1,4 +1,4 @@
-"user client";
+"use client";
 import React, { FC, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -11,7 +11,7 @@ import { FcGoogle } from "react-icons/fc";
 import { styles } from "../../../app/styles/style";
 import { useTheme } from "next-themes";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { signIn } from "next-auth/react";
 
 type Props = {
@@ -21,7 +21,7 @@ type Props = {
 
 const schema = Yup.object().shape({
   email: Yup.string()
-    .email("Invalid email")
+    .email("Invalid email!")
     .required("Please enter your email!"),
   password: Yup.string().required("Please enter your password!").min(6),
 });
@@ -30,7 +30,6 @@ const Login: FC<Props> = ({ setRoute, setOpen }) => {
   const [show, setShow] = useState(false);
   const { theme, setTheme } = useTheme();
   const [login, { isSuccess, error }] = useLoginMutation();
-
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: schema,
@@ -38,13 +37,11 @@ const Login: FC<Props> = ({ setRoute, setOpen }) => {
       await login({ email, password });
     },
   });
-
   useEffect(() => {
     if (isSuccess) {
       toast.success("Login Successfully!");
       setOpen(false);
     }
-
     if (error) {
       if ("data" in error) {
         const errorData = error as any;
@@ -56,7 +53,7 @@ const Login: FC<Props> = ({ setRoute, setOpen }) => {
   const { errors, touched, values, handleChange, handleSubmit } = formik;
 
   return (
-    <div className="h-full">
+    <div className="w-full">
       <h1 className={`${styles.title}`}>Login with Ágora</h1>
       <form onSubmit={handleSubmit}>
         <label className={`${styles.label}`} htmlFor="email">
