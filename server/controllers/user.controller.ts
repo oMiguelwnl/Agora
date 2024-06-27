@@ -14,7 +14,7 @@ import {
 } from "../utils/jwt";
 import { redis } from "../utils/redis";
 import {
-  geAllUsersService,
+  getAllUsersService,
   getUserById,
   updateUserRoleService,
 } from "../services/user.service";
@@ -186,18 +186,15 @@ export const updateAccessToken = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const refresh_token = req.cookies.refresh_token as string;
-
       const decoded = jwt.verify(
         refresh_token,
         process.env.REFRESH_TOKEN as string
       ) as JwtPayload;
 
       const message = "Could not refresh token";
-
       if (!decoded) {
         return next(new ErrorHandler(message, 400));
       }
-
       const session = await redis.get(decoded.id as string);
 
       if (!session) {
@@ -231,10 +228,7 @@ export const updateAccessToken = CatchAsyncError(
 
       await redis.set(user._id, JSON.stringify(user), "EX", 604800);
 
-      res.status(200).json({
-        status: "success",
-        accessToken,
-      });
+      return next();
     } catch (error: any) {
       return next(new ErrorHandler(error.message, 400));
     }
@@ -283,18 +277,10 @@ interface IUpdateUserInfo {
 export const updateUserInfo = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { name, email } = req.body as IUpdateUserInfo;
+      const { name } = req.body as IUpdateUserInfo;
+
       const userId = req.user?._id;
-
       const user = await userModel.findById(userId);
-
-      if (email && user) {
-        const isEmailExist = await userModel.findOne({ email });
-
-        if (isEmailExist) {
-          return next(new ErrorHandler("Email already exist", 400));
-        }
-      }
 
       if (name && user) {
         user.name = name;
@@ -319,7 +305,7 @@ interface IUpdatePassword {
   newPassword: string;
 }
 
-export const updateUserPassword = CatchAsyncError(
+export const updatePassword = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { oldPassword, newPassword } = req.body as IUpdatePassword;
@@ -363,10 +349,11 @@ interface IUpdateProfilePicture {
 export const updateProfilePicture = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { avatar } = req.body;
+      const { avatar } = req.body as IUpdateProfilePicture;
+
       const userId = req.user?._id;
 
-      const user = await userModel.findById(userId);
+      const user = await userModel.findById(userId).select("+password");
 
       if (avatar && user) {
         if (user?.avatar?.public_id) {
@@ -395,7 +382,7 @@ export const updateProfilePicture = CatchAsyncError(
 
       await redis.set(userId, JSON.stringify(user));
 
-      res.status(201).json({
+      res.status(200).json({
         success: true,
         user,
       });
@@ -406,9 +393,9 @@ export const updateProfilePicture = CatchAsyncError(
 );
 
 export const getAllUsers = CatchAsyncError(
-  async (res: Response, req: Request, next: NextFunction) => {
+  async (req: Request, res: Response, next: NextFunction) => {
     try {
-      geAllUsersService(res);
+      getAllUsersService(res);
     } catch (error: any) {
       return next(new ErrorHandler(error.message, 400));
     }
