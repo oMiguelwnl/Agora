@@ -1,6 +1,6 @@
 import NotificationModel from "../models/notification.model";
-import { CatchAsyncError } from "../middleware/catchAsyncErrors";
 import { NextFunction, Request, Response } from "express";
+import { CatchAsyncError } from "../middleware/catchAsyncErrors";
 import ErrorHandler from "../utils/ErrorHandler";
 import cron from "node-cron";
 
@@ -21,7 +21,7 @@ export const getNotifications = CatchAsyncError(
   }
 );
 
-export const updateNotifications = CatchAsyncError(
+export const updateNotification = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const notification = await NotificationModel.findById(req.params.id);
