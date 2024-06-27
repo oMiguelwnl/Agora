@@ -5,6 +5,7 @@ import {
   addReplyToReview,
   addReview,
   deleteCourse,
+  getAdminAllCourses,
   editCourse,
   getAllCourses,
   getCourseByUser,
@@ -12,7 +13,6 @@ import {
   uploadCourse,
 } from "../controllers/course.controller";
 import { authorizeRoles, isAuthenticated } from "../middleware/auth";
-
 const courseRouter = express.Router();
 
 courseRouter.post(
@@ -31,6 +31,15 @@ courseRouter.put(
 
 courseRouter.get("/get-course/:id", getSingleCourse);
 
+courseRouter.get("/get-courses", getAllCourses);
+
+courseRouter.get(
+  "/get-admin-courses",
+  isAuthenticated,
+  authorizeRoles("admin"),
+  getAdminAllCourses
+);
+
 courseRouter.get("/get-course-content/:id", isAuthenticated, getCourseByUser);
 
 courseRouter.put("/add-question", isAuthenticated, addQuestion);
@@ -46,15 +55,8 @@ courseRouter.put(
   addReplyToReview
 );
 
-courseRouter.get(
-  "/get-courses",
-  isAuthenticated,
-  authorizeRoles("admin"),
-  getAllCourses
-);
-
 courseRouter.delete(
-  "/delete-course",
+  "/delete-course/:id",
   isAuthenticated,
   authorizeRoles("admin"),
   deleteCourse
