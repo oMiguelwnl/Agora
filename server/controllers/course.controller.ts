@@ -2,14 +2,15 @@ import { NextFunction, Request, Response } from "express";
 import { CatchAsyncError } from "../middleware/catchAsyncErrors";
 import ErrorHandler from "../utils/ErrorHandler";
 import cloudinary from "cloudinary";
-import { createCourse, geAllCoursesService } from "../services/course.service";
-import CourseModel from "../models/course.model";
+import { createCourse, getAllCoursesService } from "../services/course.service";
+import CourseModel, { IComment } from "../models/course.model";
 import { redis } from "../utils/redis";
 import mongoose from "mongoose";
 import path from "path";
 import ejs from "ejs";
 import sendMail from "../utils/sendMail";
 import NotificationModel from "../models/notification.model";
+import axios from "axios";
 
 export const uploadCourse = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -39,8 +40,12 @@ export const editCourse = CatchAsyncError(
       const data = req.body;
       const thumbnail = data.thumbnail;
 
-      if (thumbnail) {
-        await cloudinary.v2.uploader.destroy(thumbnail.public_id);
+      const courseId = req.params.id;
+
+      const courseData = (await CourseModel.findById(courseId)) as any;
+
+      if (thumbnail && !thumbnail.startsWith("https")) {
+        await cloudinary.v2.uploader.destroy(courseData.thumbnail.public_id);
 
         const myCloud = await cloudinary.v2.uploader.upload(thumbnail, {
           folder: "courses",
@@ -51,7 +56,13 @@ export const editCourse = CatchAsyncError(
           url: myCloud.secure_url,
         };
       }
-      const courseId = req.params.id;
+
+      if (thumbnail.startsWith("https")) {
+        data.thumbnail = {
+          public_id: courseData?.thumbnail.public_id,
+          url: courseData?.thumbnail.url,
+        };
+      }
 
       const course = await CourseModel.findByIdAndUpdate(
         courseId,
@@ -60,7 +71,7 @@ export const editCourse = CatchAsyncError(
         },
         { new: true }
       );
-
+      await redis.set(courseId, JSON.stringify(course));
       res.status(201).json({
         success: true,
         course,
@@ -105,25 +116,14 @@ export const getSingleCourse = CatchAsyncError(
 export const getAllCourses = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const isCachedExist = await redis.get("allCourses");
-      if (isCachedExist) {
-        const courses = JSON.parse(isCachedExist);
-        res.status(200).json({
-          success: true,
-          courses,
-        });
-      } else {
-        const courses = await CourseModel.find().select(
-          "-courseData.videoUrl -courseData.suggestion -courseData.questions -courseData.links"
-        );
+      const courses = await CourseModel.find().select(
+        "-courseData.videoUrl -courseData.suggestion -courseData.questions -courseData.links"
+      );
 
-        await redis.set("allCourses", JSON.stringify(courses));
-
-        res.status(200).json({
-          success: true,
-          courses,
-        });
-      }
+      res.status(200).json({
+        success: true,
+        courses,
+      });
     } catch (error: any) {
       return next(new ErrorHandler(error.message, 500));
     }
@@ -360,16 +360,15 @@ export const addReview = CatchAsyncError(
   }
 );
 
-interface IAddReviewReplyData {
+interface IAddReviewData {
   comment: string;
   courseId: string;
   reviewId: string;
 }
-
 export const addReplyToReview = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { comment, courseId, reviewId } = req.body as IAddReviewReplyData;
+      const { comment, courseId, reviewId } = req.body as IAddReviewData;
 
       const course = await CourseModel.findById(courseId);
 
@@ -401,7 +400,6 @@ export const addReplyToReview = CatchAsyncError(
       await course?.save();
 
       await redis.set(courseId, JSON.stringify(course), "EX", 604800);
-
       res.status(200).json({
         success: true,
         course,
@@ -412,10 +410,10 @@ export const addReplyToReview = CatchAsyncError(
   }
 );
 
-export const geAllCourses = CatchAsyncError(
-  async (res: Response, req: Request, next: NextFunction) => {
+export const getAdminAllCourses = CatchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
     try {
-      geAllCoursesService(res);
+      getAllCoursesService(res);
     } catch (error: any) {
       return next(new ErrorHandler(error.message, 400));
     }
