@@ -10,12 +10,25 @@ import orderRouter from "./routes/order.route";
 import notificationRouter from "./routes/notification.route";
 import analyticsRouter from "./routes/analytics.route";
 import layoutRouter from "./routes/layout.route";
+import { rateLimit } from "express-rate-limit";
 
 app.use(express.json({ limit: "50mb" }));
 
 app.use(cookieParser());
 
-app.use(cors({ origin: process.env.ORIGIN }));
+const corsOptions = {
+  origin: ["http://localhost:3000"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: "draft-7",
+  legacyHeaders: false,
+});
 
 app.use(
   "/api/v1",
@@ -40,4 +53,5 @@ app.all("*", (req: Request, res: Response, next: NextFunction) => {
   next(err);
 });
 
+app.use(limiter);
 app.use(ErrorMiddleware);
