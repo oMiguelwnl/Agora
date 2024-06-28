@@ -19,7 +19,7 @@ const Page: FC<Props> = (props) => {
         <Heading
           title={`${user?.name} profile`}
           description="Ágora is a platform for students to learn and get help from teachers"
-          keywords="Programming, MERN, Courses, Machine Learning, "
+          keywords="Programming, MERN, Courses, Machine Learning"
         />
         <Header
           open={open}
