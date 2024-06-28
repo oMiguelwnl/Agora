@@ -61,3 +61,4 @@
     10. Yup
     11. Toast
     12. NextAuth
+    13. React Pro sidebar
