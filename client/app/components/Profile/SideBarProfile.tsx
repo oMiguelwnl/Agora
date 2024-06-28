@@ -65,7 +65,22 @@ const SideBarProfile: FC<Props> = ({
           Enrolled Courses
         </h5>
       </div>
-
+      {user.role === "admin" && (
+        <Link
+          className={`w-full flex items-center px-3 py-4 cursor-pointer ${
+            active === 6 ? "dark:bg-slate-800 bg-white" : "bg-transparent"
+          }`}
+          href={"/admin"}
+        >
+          <MdOutlineAdminPanelSettings
+            size={20}
+            className="dark:text-white text-black"
+          />
+          <h5 className="pl-2 800px:block hidden font-Poppins dark:text-white text-black">
+            Admin Dashboard
+          </h5>
+        </Link>
+      )}
       <div
         className={`w-full flex items-center px-3 py-4 cursor-pointer ${
           active === 4 ? "dark:bg-slate-800 bg-white" : "bg-transparent"
