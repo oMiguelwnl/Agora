@@ -9,7 +9,6 @@ import {
 } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { styles } from "../../../app/styles/style";
-import { useTheme } from "next-themes";
 import { useRegisterMutation } from "@/redux/features/auth/authApi";
 import { toast } from "react-hot-toast";
 
@@ -27,7 +26,6 @@ const schema = Yup.object().shape({
 
 const Signup: FC<Props> = ({ setRoute }) => {
   const [show, setShow] = useState(false);
-  const { theme, setTheme } = useTheme();
   const [register, { data, error, isSuccess }] = useRegisterMutation();
 
   useEffect(() => {
@@ -116,16 +114,16 @@ const Signup: FC<Props> = ({ setRoute }) => {
           />
           {!show ? (
             <AiOutlineEyeInvisible
-              className="absolute bottom-3 right-2 z-1 cursor-pointer"
+              color="black"
+              className="absolute bottom-3 right-2 z-1 cursor-pointer dark:bg-slate-600 "
               size={20}
-              color={theme === "dark" ? "white" : "black"}
               onClick={() => setShow(true)}
             />
           ) : (
             <AiOutlineEye
-              className="absolute bottom-3 right-2 z-1 cursor-pointer"
+              color="black"
+              className="absolute bottom-3 right-2 z-1 cursor-pointer dark:bg-slate-600 "
               size={20}
-              color={theme === "dark" ? "white" : "black"}
               onClick={() => setShow(false)}
             />
           )}
@@ -142,19 +140,11 @@ const Signup: FC<Props> = ({ setRoute }) => {
         </h5>
         <div className="flex items-center justify-center my-3">
           <FcGoogle size={30} className="cursor-pointer mr-2" />
-          {theme === "light" ? (
-            <AiFillGithub
-              size={30}
-              color="black"
-              className="cursor-pointer ml-2"
-            />
-          ) : (
-            <AiFillGithub
-              size={30}
-              color="white"
-              className="cursor-pointer ml-2"
-            />
-          )}
+          <AiFillGithub
+            color="black"
+            size={30}
+            className="cursor-pointer ml-2 dark:bg-white"
+          />
         </div>
         <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">
           Already have an account?{" "}

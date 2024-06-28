@@ -9,7 +9,6 @@ import {
 } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { styles } from "../../../app/styles/style";
-import { useTheme } from "next-themes";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { toast } from "react-hot-toast";
 import { signIn } from "next-auth/react";
@@ -28,7 +27,6 @@ const schema = Yup.object().shape({
 
 const Login: FC<Props> = ({ setRoute, setOpen }) => {
   const [show, setShow] = useState(false);
-  const { theme, setTheme } = useTheme();
   const [login, { isSuccess, error }] = useLoginMutation();
   const formik = useFormik({
     initialValues: { email: "", password: "" },
@@ -90,16 +88,16 @@ const Login: FC<Props> = ({ setRoute, setOpen }) => {
           />
           {!show ? (
             <AiOutlineEyeInvisible
-              className="absolute bottom-3 right-2 z-1 cursor-pointer"
+              color="black"
+              className="absolute bottom-3 right-2 z-1 cursor-pointer dark:bg-slate-600 "
               size={20}
-              color={theme === "dark" ? "white" : "black"}
               onClick={() => setShow(true)}
             />
           ) : (
             <AiOutlineEye
-              className="absolute bottom-3 right-2 z-1 cursor-pointer"
+              color="black"
+              className="absolute bottom-3 right-2 z-1 cursor-pointer dark:bg-slate-600 "
               size={20}
-              color={theme === "dark" ? "white" : "black"}
               onClick={() => setShow(false)}
             />
           )}
@@ -120,21 +118,13 @@ const Login: FC<Props> = ({ setRoute, setOpen }) => {
             className="cursor-pointer mr-2"
             onClick={() => signIn("google")}
           />
-          {theme === "light" ? (
-            <AiFillGithub
-              size={30}
-              color="black"
-              className="cursor-pointer ml-2"
-              onClick={() => signIn("github")}
-            />
-          ) : (
-            <AiFillGithub
-              size={30}
-              color="white"
-              className="cursor-pointer ml-2"
-              onClick={() => signIn("github")}
-            />
-          )}
+
+          <AiFillGithub
+            size={30}
+            color="black"
+            className="cursor-pointer ml-2 dark:bg-white"
+            onClick={() => signIn("github")}
+          />
         </div>
         <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">
           Not have any account?{" "}
