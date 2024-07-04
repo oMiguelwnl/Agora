@@ -360,7 +360,7 @@ export const addReview = CatchAsyncError(
   }
 );
 
-interface IAddReviewData {
+interface IAddReviewDataReplay {
   comment: string;
   courseId: string;
   reviewId: string;
@@ -368,7 +368,7 @@ interface IAddReviewData {
 export const addReplyToReview = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { comment, courseId, reviewId } = req.body as IAddReviewData;
+      const { comment, courseId, reviewId } = req.body as IAddReviewDataReplay;
 
       const course = await CourseModel.findById(courseId);
 
