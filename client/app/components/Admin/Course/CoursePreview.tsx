@@ -37,21 +37,21 @@ const CoursePreview: FC<Props> = ({
   return (
     <div className="w-[90%] m-auto py-5 mb-5">
       <div className="w-full relative">
-        <div className="w-full mt-10">
+        <div className="w-full mt-10 dark:text-white text-black">
           <CoursePlayer
             videoUrl={courseData?.demoUrl}
             title={courseData?.title}
           />
         </div>
         <div className="flex items-center">
-          <h1 className="pt-5 text-[25px]">
+          <h1 className="pt-5 text-[25px] dark:text-white text-black">
             {courseData?.price === 0 ? "Free" : courseData?.price + "$"}
           </h1>
-          <h5 className="pl-3 text-[20px] mt-2 line-through opacity-80">
+          <h5 className="pl-3 text-[20px] mt-2 line-through opacity-80 dark:text-white text-black">
             {courseData?.estimatedPrice}$
           </h5>
 
-          <h4 className="pl-5 pt-4 text-[22px]">
+          <h4 className="pl-5 pt-4 text-[22px] dark:text-white text-black">
             {discountPercentagePrice}% Off
           </h4>
         </div>
@@ -78,25 +78,33 @@ const CoursePreview: FC<Props> = ({
             Apply
           </div>
         </div>
-        <p className="pb-1">• Source code included</p>
-        <p className="pb-1">• Full lifetime access</p>
-        <p className="pb-1">• Certificate of completion</p>
-        <p className="pb-3 800px:pb-1">• Premium Support</p>
+        <p className="pb-1 dark:text-white text-black">
+          • Source code included
+        </p>
+        <p className="pb-1 dark:text-white text-black">
+          • Full lifetime access
+        </p>
+        <p className="pb-1 dark:text-white text-black">
+          • Certificate of completion
+        </p>
+        <p className="pb-3 800px:pb-1 dark:text-white text-black">
+          • Premium Support
+        </p>
       </div>
       <div className="w-full">
         <div className="w-full 800px:pr-5">
-          <h1 className="text-[25px] font-Poppins font-[600]">
+          <h1 className="text-[25px] font-Poppins font-[600] dark:text-white text-black">
             {courseData?.name}
           </h1>
           <div className="flex items-center justify-between pt-3">
             <div className="flex items-center">
               <Ratings rating={0} />
-              <h5>0 Reviews</h5>
+              <h5 className="dark:text-white text-black">0 Reviews</h5>
             </div>
-            <h5>0 Students</h5>
+            <h5 className="dark:text-white text-black">0 Students</h5>
           </div>
           <br />
-          <h1 className="text-[25px] font-Poppins font-[600]">
+          <h1 className="text-[25px] font-Poppins font-[600] dark:text-white text-black">
             What you will learn from this course?
           </h1>
         </div>
@@ -105,12 +113,12 @@ const CoursePreview: FC<Props> = ({
             <div className="w-[15px] mr-1">
               <IoCheckmarkDoneOutline size={20} />
             </div>
-            <p className="pl-2">{item.title}</p>
+            <p className="pl-2 dark:text-white text-black">{item.title}</p>
           </div>
         ))}
         <br />
         <br />
-        <h1 className="text-[25px] font-Poppins font-[600]">
+        <h1 className="text-[25px] font-Poppins font-[600] dark:text-white text-black">
           What are the prerequisites for starting this course?
         </h1>
         {courseData?.prerequisites?.map((item: any, index: number) => (
@@ -118,17 +126,17 @@ const CoursePreview: FC<Props> = ({
             <div className="w-[15px] mr-1">
               <IoCheckmarkDoneOutline size={20} />
             </div>
-            <p className="pl-2">{item.title}</p>
+            <p className="pl-2 dark:text-white text-black">{item.title}</p>
           </div>
         ))}
         <br />
         <br />
         {/* course description */}
         <div className="w-full">
-          <h1 className="text-[25px] font-Poppins font-[600]">
+          <h1 className="text-[25px] font-Poppins font-[600] dark:text-white text-black">
             Course Details
           </h1>
-          <p className="text-[18px] mt-[20px] whitespace-pre-line w-full overflow-hidden">
+          <p className="text-[18px] mt-[20px] whitespace-pre-line w-full overflow-hidden dark:text-white text-black">
             {courseData?.description}
           </p>
         </div>
