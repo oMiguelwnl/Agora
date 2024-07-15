@@ -11,7 +11,6 @@ import CheckOutForm from "../Payment/CheckOutForm";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
 import Image from "next/image";
 import { VscVerifiedFilled } from "react-icons/vsc";
-import { loadStripe } from "@stripe/stripe-js";
 
 type Props = {
   data: any;
@@ -21,12 +20,9 @@ type Props = {
   setOpen: any;
 };
 
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
-);
-
 const CourseDetails = ({
   data,
+  stripePromise,
   clientSecret,
   setRoute,
   setOpen: openAuthModal,
