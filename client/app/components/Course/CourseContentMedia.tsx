@@ -20,6 +20,9 @@ import {
 import { BiMessage } from "react-icons/bi";
 import { VscVerifiedFilled } from "react-icons/vsc";
 import Ratings from "@/app/utils/Ratings";
+import socketIO from "socket.io-client";
+const ENDPOINT = process.env.NEXT_PUBLIC_SOCKET_SERVER_URL || "";
+const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 type Props = {
   data: any;
@@ -103,10 +106,22 @@ const CourseContentMedia = ({
     if (isSuccess) {
       setQuestion("");
       refetch();
+      socketId.emit("notification", {
+        title: `New Question Received`,
+        message: `You have a new question in ${data[activeVideo].title}`,
+        userId: user._id,
+      });
     }
     if (answerSuccess) {
       setAnswer("");
       refetch();
+      if (user.role !== "admin") {
+        socketId.emit("notification", {
+          title: `New Reply Received`,
+          message: `You have a new question in ${data[activeVideo].title}`,
+          userId: user._id,
+        });
+      }
     }
     if (error) {
       if ("data" in error) {
@@ -124,6 +139,11 @@ const CourseContentMedia = ({
       setReview("");
       setRating(1);
       courseRefetch();
+      socketId.emit("notification", {
+        title: `New Question Received`,
+        message: `You have a new question in ${data[activeVideo].title}`,
+        userId: user._id,
+      });
     }
     if (reviewError) {
       if ("data" in reviewError) {
