@@ -9,7 +9,7 @@ export const ordersApi = apiSlice.injectEndpoints({
         credentials: "include" as const,
       }),
     }),
-    getStripePublishable: builder.query({
+    getStripePublishablekey: builder.query({
       query: () => ({
         url: `payment/stripepublishablekey`,
         method: "GET",
@@ -42,7 +42,7 @@ export const ordersApi = apiSlice.injectEndpoints({
 
 export const {
   useGetAllOrdersQuery,
-  useGetStripePublishableQuery,
+  useGetStripePublishablekeyQuery,
   useCreatePaymentIntentMutation,
   useCreateOrderMutation,
 } = ordersApi;

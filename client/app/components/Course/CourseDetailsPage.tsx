@@ -7,7 +7,7 @@ import Footer from "../Footer";
 import CourseDetails from "./CourseDetails";
 import {
   useCreatePaymentIntentMutation,
-  useGetStripePublishableQuery as useGetStripePublishableQuery,
+  useGetStripePublishablekeyQuery,
 } from "@/redux/features/orders/ordersApi";
 import { loadStripe } from "@stripe/stripe-js";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
@@ -20,7 +20,7 @@ const CourseDetailsPage = ({ id }: Props) => {
   const [route, setRoute] = useState("Login");
   const [open, setOpen] = useState(false);
   const { data, isLoading } = useGetCourseDetailsQuery(id);
-  const { data: config } = useGetStripePublishableQuery({});
+  const { data: config } = useGetStripePublishablekeyQuery({});
   const [createPaymentIntent, { data: paymentIntentData }] =
     useCreatePaymentIntentMutation();
   const { data: userData } = useLoadUserQuery(undefined, {});
@@ -29,8 +29,8 @@ const CourseDetailsPage = ({ id }: Props) => {
 
   useEffect(() => {
     if (config) {
-      const publishable = config?.publishablekey;
-      setStripePromise(loadStripe(publishable));
+      const publishablekey = config?.publishablekey;
+      setStripePromise(loadStripe(publishablekey));
     }
     if (data && userData?.user) {
       const amount = Math.round(data.course.price * 100);
