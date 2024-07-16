@@ -16,6 +16,7 @@ import { signIn } from "next-auth/react";
 type Props = {
   setRoute: (route: string) => void;
   setOpen: (open: boolean) => void;
+  refetch: any;
 };
 
 const schema = Yup.object().shape({
@@ -25,7 +26,7 @@ const schema = Yup.object().shape({
   password: Yup.string().required("Please enter your password!").min(6),
 });
 
-const Login: FC<Props> = ({ setRoute, setOpen }) => {
+const Login: FC<Props> = ({ setRoute, setOpen, refetch }) => {
   const [show, setShow] = useState(false);
   const [login, { isSuccess, error }] = useLoginMutation();
   const formik = useFormik({
@@ -35,10 +36,12 @@ const Login: FC<Props> = ({ setRoute, setOpen }) => {
       await login({ email, password });
     },
   });
+
   useEffect(() => {
     if (isSuccess) {
       toast.success("Login Successfully!");
       setOpen(false);
+      refetch();
     }
     if (error) {
       if ("data" in error) {
@@ -101,10 +104,10 @@ const Login: FC<Props> = ({ setRoute, setOpen }) => {
               onClick={() => setShow(false)}
             />
           )}
+          {errors.password && touched.password && (
+            <span className="text-red-500 pt-2 block">{errors.password}</span>
+          )}
         </div>
-        {errors.password && touched.password && (
-          <span className="text-red-500 pt-2 block">{errors.password}</span>
-        )}
         <div className="w-full mt-5">
           <input type="submit" value="Login" className={`${styles.button}`} />
         </div>
