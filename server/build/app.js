@@ -20,7 +20,8 @@ const express_rate_limit_1 = require("express-rate-limit");
 exports.app.use(express_1.default.json({ limit: "50mb" }));
 exports.app.use((0, cookie_parser_1.default)());
 exports.app.use((0, cors_1.default)({
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "agora-official-git-monarch-omiguelwnls-projects.vercel.app
+    "],
     credentials: true,
 }));
 const limiter = (0, express_rate_limit_1.rateLimit)({
