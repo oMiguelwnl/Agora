@@ -1,6 +1,6 @@
 import { styles } from "@/app/styles/style";
 import { useGetOrdersAnalyticsQuery } from "@/redux/features/analytics/analyticsApi";
-import React, { useEffect } from "react";
+import React from "react";
 import {
   LineChart,
   Line,
@@ -12,37 +12,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import Loader from "../../Loader/Loader";
-
-// const analyticsData = [
-//   {
-//     name: "Page A",
-//     Count: 4000,
-//   },
-//   {
-//     name: "Page B",
-//     Count: 3000,
-//   },
-//   {
-//     name: "Page C",
-//     Count: 5000,
-//   },
-//   {
-//     name: "Page D",
-//     Count: 1000,
-//   },
-//   {
-//     name: "Page E",
-//     Count: 4000,
-//   },
-//   {
-//     name: "Page F",
-//     Count: 800,
-//   },
-//   {
-//     name: "Page G",
-//     Count: 200,
-//   },
-// ];
 
 type Props = {
   isDashboard?: boolean;
@@ -72,11 +41,11 @@ export default function OrdersAnalytics({ isDashboard }: Props) {
                 isDashboard && "!text-[20px]"
               } px-5 !text-start`}
             >
-              Orders Analytics
+              Análise de Pedidos
             </h1>
             {!isDashboard && (
               <p className={`${styles.label} px-5`}>
-                Last 12 months analytics data{" "}
+                Dados de análise dos últimos 12 meses
               </p>
             )}
           </div>

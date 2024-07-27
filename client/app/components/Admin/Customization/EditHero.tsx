@@ -25,13 +25,13 @@ const EditHero: FC<Props> = (props: Props) => {
       setImage(data?.layout?.banner?.image?.url);
     }
     if (isSuccess) {
-      toast.success("Hero updated successfully!");
+      toast.success("Hero atualizado com sucesso!");
       refetch();
     }
     if (error) {
       if ("data" in error) {
         const errorData = error as any;
-        toast.error(errorData?.data?.message);
+        toast.error(errorData?.data?.message || "Erro ao atualizar Hero");
       }
     }
   }, [data, isSuccess, error]);
@@ -85,7 +85,7 @@ const EditHero: FC<Props> = (props: Props) => {
         <div className="1000px:w-[60%] flex flex-col items-center 1000px:mt-[0px] text-center 1000px:text-left mt-[150px]">
           <textarea
             className="dark:text-white resize-none text-[#000000c7] text-[30px] px-3 w-full 1000px:text-[60px] 1500px:text-[70px] font-[600] font-Josefin py-2 1000px:leading-[75px] 1500px:w-[60%] 1100px:w-[78%] outline-none bg-transparent block"
-            placeholder="Improve Your Online Learning Experience Better Instantly"
+            placeholder="Melhore sua experiência de aprendizado online instantaneamente"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             rows={4}
@@ -94,7 +94,7 @@ const EditHero: FC<Props> = (props: Props) => {
           <textarea
             value={subTitle}
             onChange={(e) => setSubTitle(e.target.value)}
-            placeholder="We have 40k+ Online courses & 500K+ Online registered student. Find your desired Courses from them."
+            placeholder="Temos 40k+ cursos online e 500k+ estudantes registrados online. Encontre seus cursos desejados."
             className="dark:text-[#edfff4] text-[#000000ac] font-Josefin font-[600] text-[18px] 1500px:!w-[55%] 1100px:!w-[74%] bg-transparent outline-none resize-none"
           ></textarea>
           <br />
@@ -120,7 +120,7 @@ const EditHero: FC<Props> = (props: Props) => {
                 : () => null
             }
           >
-            Save
+            Salvar
           </div>
         </div>
       </div>

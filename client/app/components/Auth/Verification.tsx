@@ -23,7 +23,7 @@ const Verification: FC<Props> = ({ setRoute }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success("Account activated successfully");
+      toast.success("Conta ativada com sucesso");
       setRoute("Login");
     }
     if (error) {
@@ -32,7 +32,7 @@ const Verification: FC<Props> = ({ setRoute }) => {
         toast.error(errorData.data.message);
         setInvalidError(true);
       } else {
-        console.log("An error occurred:", error);
+        console.log("Ocorreu um erro:", error);
       }
     }
   }, [isSuccess, error]);
@@ -77,7 +77,7 @@ const Verification: FC<Props> = ({ setRoute }) => {
 
   return (
     <div>
-      <h1 className={`${styles.title}`}>Verify Your Account</h1>
+      <h1 className={`${styles.title}`}>Verifique sua Conta</h1>
       <br />
       <div className="w-full flex items-center justify-center mt-2">
         <div className="w-[80px] h-[80px] rounded-full bg-[#497DF2] flex items-center justify-center">
@@ -108,17 +108,17 @@ const Verification: FC<Props> = ({ setRoute }) => {
       <br />
       <div className="w-full flex justify-center">
         <button className={`${styles.button}`} onClick={verificationHandler}>
-          Verify OTP
+          Verificar OTP
         </button>
       </div>
       <br />
       <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">
-        Go back to sign in?{" "}
+        Voltar para o login?{" "}
         <span
           className="text-[#2190ff] pl-1 cursor-pointer"
           onClick={() => setRoute("Login")}
         >
-          Sign in
+          Fazer login
         </span>
       </h5>
     </div>

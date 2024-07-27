@@ -35,10 +35,10 @@ const CourseDetails = ({
     setUser(userData?.user);
   }, [userData]);
 
-  const discountPercentage =
+  const dicountPercentage =
     ((data?.estimatedPrice - data.price) / data?.estimatedPrice) * 100;
 
-  const discountPercentagePrice = discountPercentage.toFixed(0);
+  const discountPercentagePrice = dicountPercentage.toFixed(0);
 
   const isPurchased =
     user && user?.courses?.find((item: any) => item._id === data._id);
@@ -64,17 +64,17 @@ const CourseDetails = ({
               <div className="flex items-center">
                 <Ratings rating={data.ratings} />
                 <h5 className="text-black dark:text-white">
-                  {data.reviews?.length} Reviews
+                  {data.reviews?.length} Avaliações
                 </h5>
               </div>
               <h5 className="text-black dark:text-white">
-                {data.purchased} Students
+                {data.purchased} Alunos
               </h5>
             </div>
 
             <br />
             <h1 className="text-[25px] font-Poppins font-[600] text-black dark:text-white">
-              What you will learn from this course?
+              O que você vai aprender com este curso?
             </h1>
             <div>
               {data.benefits?.map((item: any, index: number) => (
@@ -97,7 +97,7 @@ const CourseDetails = ({
               <br />
             </div>
             <h1 className="text-[25px] font-Poppins font-[600] text-black dark:text-white">
-              What are the prerequisites for starting this course?
+              Quais são os pré-requisitos para começar este curso?
             </h1>
             {data.prerequisites?.map((item: any, index: number) => (
               <div className="w-full flex 800px:items-center py-2" key={index}>
@@ -114,7 +114,7 @@ const CourseDetails = ({
             <br />
             <div>
               <h1 className="text-[25px] font-Poppins font-[600] text-black dark:text-white">
-                Course Overview
+                Visão Geral do Curso
               </h1>
               <CourseContentList data={data?.courseData} isDemo={true} />
             </div>
@@ -123,7 +123,7 @@ const CourseDetails = ({
             {/* course description */}
             <div className="w-full">
               <h1 className="text-[25px] font-Poppins font-[600] text-black dark:text-white">
-                Course Details
+                Detalhes do Curso
               </h1>
               <p className="text-[18px] mt-[20px] whitespace-pre-line w-full overflow-hidden text-black dark:text-white">
                 {data.description}
@@ -139,7 +139,7 @@ const CourseDetails = ({
                   {Number.isInteger(data?.ratings)
                     ? data?.ratings.toFixed(1)
                     : data?.ratings.toFixed(2)}{" "}
-                  Course Rating • {data?.reviews?.length} Reviews
+                  Avaliação do Curso • {data?.reviews?.length} Avaliações
                 </h5>
               </div>
               <br />
@@ -218,14 +218,14 @@ const CourseDetails = ({
               <CoursePlayer videoUrl={data?.demoUrl} title={data?.title} />
               <div className="flex items-center">
                 <h1 className="pt-5 text-[25px] text-black dark:text-white">
-                  {data.price === 0 ? "Free" : data.price + "$"}
+                  {data.price === 0 ? "Grátis" : data.price + "$"}
                 </h1>
                 <h5 className="pl-3 text-[20px] mt-2 line-through opacity-80 text-black dark:text-white">
                   {data.estimatedPrice}$
                 </h5>
 
                 <h4 className="pl-5 pt-4 text-[22px] text-black dark:text-white">
-                  {discountPercentagePrice}% Off
+                  {discountPercentagePrice}% de Desconto
                 </h4>
               </div>
               <div className="flex items-center">
@@ -234,29 +234,29 @@ const CourseDetails = ({
                     className={`${styles.button} !w-[180px] my-3 font-Poppins cursor-pointer !bg-[crimson]`}
                     href={`/course-access/${data._id}`}
                   >
-                    Enter to Course
+                    Acessar Curso
                   </Link>
                 ) : (
                   <div
                     className={`${styles.button} !w-[180px] my-3 font-Poppins cursor-pointer !bg-[crimson]`}
                     onClick={handleOrder}
                   >
-                    Buy Now {data.price}$
+                    Comprar {data.price}$
                   </div>
                 )}
               </div>
               <br />
               <p className="pb-1 text-black dark:text-white">
-                • Source code included
+                • Código fonte incluído
               </p>
               <p className="pb-1 text-black dark:text-white">
-                • Full lifetime access
+                • Acesso vitalício completo
               </p>
               <p className="pb-1 text-black dark:text-white">
-                • Certificate of completion
+                • Certificado de conclusão
               </p>
               <p className="pb-3 800px:pb-1 text-black dark:text-white">
-                • Premium Support
+                • Suporte Premium
               </p>
             </div>
           </div>

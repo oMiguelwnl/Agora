@@ -45,7 +45,7 @@ const CoursePreview: FC<Props> = ({
         </div>
         <div className="flex items-center">
           <h1 className="pt-5 text-[25px] dark:text-white text-black">
-            {courseData?.price === 0 ? "Free" : courseData?.price + "$"}
+            {courseData?.price === 0 ? "Grátis" : courseData?.price + "$"}
           </h1>
           <h5 className="pl-3 text-[20px] mt-2 line-through opacity-80 dark:text-white text-black">
             {courseData?.estimatedPrice}$
@@ -60,7 +60,7 @@ const CoursePreview: FC<Props> = ({
           <div
             className={`${styles.button} !w-[180px] my-3 font-Poppins !bg-[crimson] cursor-not-allowed`}
           >
-            Buy Now {courseData?.price}$
+            Comprar {courseData?.price}$
           </div>
         </div>
 
@@ -69,26 +69,26 @@ const CoursePreview: FC<Props> = ({
             type="text"
             name=""
             id=""
-            placeholder="Discount code..."
+            placeholder="Código de desconto..."
             className={`${styles.input} 1500px:!w-[50%] 1100px:w-[60%] ml-3 !mt-0`}
           />
           <div
             className={`${styles.button} !w-[120px] my-3 ml-4 font-Poppins cursor-pointer`}
           >
-            Apply
+            Aplicar
           </div>
         </div>
         <p className="pb-1 dark:text-white text-black">
-          • Source code included
+          • Código fonte incluído
         </p>
         <p className="pb-1 dark:text-white text-black">
-          • Full lifetime access
+          • Acesso vitalício completo
         </p>
         <p className="pb-1 dark:text-white text-black">
-          • Certificate of completion
+          • Certificado de conclusão
         </p>
         <p className="pb-3 800px:pb-1 dark:text-white text-black">
-          • Premium Support
+          • Suporte Premium
         </p>
       </div>
       <div className="w-full">
@@ -99,13 +99,13 @@ const CoursePreview: FC<Props> = ({
           <div className="flex items-center justify-between pt-3">
             <div className="flex items-center">
               <Ratings rating={0} />
-              <h5 className="dark:text-white text-black">0 Reviews</h5>
+              <h5 className="dark:text-white text-black">0 Avaliações</h5>
             </div>
-            <h5 className="dark:text-white text-black">0 Students</h5>
+            <h5 className="dark:text-white text-black">0 Alunos</h5>
           </div>
           <br />
           <h1 className="text-[25px] font-Poppins font-[600] dark:text-white text-black">
-            What you will learn from this course?
+            O que você aprenderá com este curso?
           </h1>
         </div>
         {courseData?.benefits?.map((item: any, index: number) => (
@@ -119,7 +119,7 @@ const CoursePreview: FC<Props> = ({
         <br />
         <br />
         <h1 className="text-[25px] font-Poppins font-[600] dark:text-white text-black">
-          What are the prerequisites for starting this course?
+          Quais são os pré-requisitos para iniciar este curso?
         </h1>
         {courseData?.prerequisites?.map((item: any, index: number) => (
           <div className="w-full flex 800px:items-center py-2" key={index}>
@@ -134,7 +134,7 @@ const CoursePreview: FC<Props> = ({
         {/* course description */}
         <div className="w-full">
           <h1 className="text-[25px] font-Poppins font-[600] dark:text-white text-black">
-            Course Details
+            Detalhes do Curso
           </h1>
           <p className="text-[18px] mt-[20px] whitespace-pre-line w-full overflow-hidden dark:text-white text-black">
             {courseData?.description}
@@ -148,13 +148,13 @@ const CoursePreview: FC<Props> = ({
           className="w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[#37a39a] text-center text-[#fff] rounded mt-8 cursor-pointer"
           onClick={() => prevButton()}
         >
-          Prev
+          Anterior
         </div>
         <div
           className="w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[#37a39a] text-center text-[#fff] rounded mt-8 cursor-pointer"
           onClick={() => createCourse()}
         >
-          {isEdit ? "Update" : "Create"}
+          {isEdit ? "Atualizar" : "Criar"}
         </div>
       </div>
     </div>

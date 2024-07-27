@@ -17,11 +17,11 @@ type Props = {
 };
 
 const schema = Yup.object().shape({
-  name: Yup.string().required("Please enter your name!"),
+  name: Yup.string().required("Por favor, insira seu nome!"),
   email: Yup.string()
-    .email("Invalid email!")
-    .required("Please enter your email!"),
-  password: Yup.string().required("Please enter your password!").min(6),
+    .email("Email inválido!")
+    .required("Por favor, insira seu email!"),
+  password: Yup.string().required("Por favor, insira sua senha!").min(6),
 });
 
 const Signup: FC<Props> = ({ setRoute }) => {
@@ -30,7 +30,7 @@ const Signup: FC<Props> = ({ setRoute }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      const message = data?.message || "Registration successful";
+      const message = data?.message || "Cadastro realizado com sucesso";
       toast.success(message);
       setRoute("Verification");
     }
@@ -59,11 +59,11 @@ const Signup: FC<Props> = ({ setRoute }) => {
 
   return (
     <div className="w-full">
-      <h1 className={`${styles.title}`}>Join to Ágora</h1>
+      <h1 className={`${styles.title}`}>Cadastre-se na Ágora</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label className={`${styles.label}`} htmlFor="email">
-            Enter your Name
+          <label className={`${styles.label}`} htmlFor="name">
+            Insira seu Nome
           </label>
           <input
             type="text"
@@ -81,7 +81,7 @@ const Signup: FC<Props> = ({ setRoute }) => {
           )}
         </div>
         <label className={`${styles.label}`} htmlFor="email">
-          Enter your Email
+          Insira seu Email
         </label>
         <input
           type="email"
@@ -98,8 +98,8 @@ const Signup: FC<Props> = ({ setRoute }) => {
           <span className="text-red-500 pt-2 block">{errors.email}</span>
         )}
         <div className="w-full mt-5 relative mb-1">
-          <label className={`${styles.label}`} htmlFor="email">
-            Enter your password
+          <label className={`${styles.label}`} htmlFor="password">
+            Insira sua senha
           </label>
           <input
             type={!show ? "password" : "text"}
@@ -107,7 +107,7 @@ const Signup: FC<Props> = ({ setRoute }) => {
             value={values.password}
             onChange={handleChange}
             id="password"
-            placeholder="password!@%"
+            placeholder="senha!@%"
             className={`${
               errors.password && touched.password && "border-red-500"
             } ${styles.input}`}
@@ -132,11 +132,15 @@ const Signup: FC<Props> = ({ setRoute }) => {
           <span className="text-red-500 pt-2 block">{errors.password}</span>
         )}
         <div className="w-full mt-5">
-          <input type="submit" value="Sign Up" className={`${styles.button}`} />
+          <input
+            type="submit"
+            value="Cadastrar"
+            className={`${styles.button}`}
+          />
         </div>
         <br />
         <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">
-          Or join with
+          Ou entre com
         </h5>
         <div className="flex items-center justify-center my-3">
           <FcGoogle size={30} className="cursor-pointer mr-2" />
@@ -147,12 +151,12 @@ const Signup: FC<Props> = ({ setRoute }) => {
           />
         </div>
         <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">
-          Already have an account?{" "}
+          Já tem uma conta?{" "}
           <span
             className="text-[#2190ff] pl-1 cursor-pointer"
             onClick={() => setRoute("Login")}
           >
-            Sign in
+            Faça login
           </span>
         </h5>
       </form>

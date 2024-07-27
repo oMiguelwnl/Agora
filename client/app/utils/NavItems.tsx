@@ -3,19 +3,19 @@ import React from "react";
 
 export const navItemsData = [
   {
-    name: "Home",
+    name: "Início",
     url: "/",
   },
   {
-    name: "Courses",
+    name: "Cursos",
     url: "/courses",
   },
   {
-    name: "About",
+    name: "Sobre",
     url: "/about",
   },
   {
-    name: "Policy",
+    name: "Política",
     url: "/policy",
   },
   {
@@ -34,16 +34,16 @@ const NavItems: React.FC<Props> = ({ activeItem, isMobile }) => {
     <>
       <div className="hidden 800px:flex">
         {navItemsData &&
-          navItemsData.map((i, index) => (
-            <Link href={`${i.url}`} key={index} passHref>
+          navItemsData.map((item, index) => (
+            <Link href={item.url} key={index} passHref>
               <span
                 className={`${
                   activeItem === index
                     ? "dark:text-[#37a39a] text-[crimson]"
                     : "dark:text-white text-black"
-                } text-[18px] px-6 font-Poppins font-[400]`}
+                } text-[18px] px-6 font-Poppins font-[400] cursor-pointer`}
               >
-                {i.name}
+                {item.name}
               </span>
             </Link>
           ))}
@@ -53,23 +53,23 @@ const NavItems: React.FC<Props> = ({ activeItem, isMobile }) => {
           <div className="w-full text-center py-6">
             <Link href={"/"} passHref>
               <span
-                className={`text-[25px] font-Poppins font-[500] text-black dark:text-white`}
+                className={`text-[25px] font-Poppins font-[500] text-black dark:text-white cursor-pointer`}
               >
                 Ágora
               </span>
             </Link>
           </div>
           {navItemsData &&
-            navItemsData.map((i, index) => (
-              <Link href="/" passHref key={index}>
+            navItemsData.map((item, index) => (
+              <Link href={item.url} passHref key={index}>
                 <span
                   className={`${
                     activeItem === index
                       ? "dark:text-[#37a39a] text-[crimson]"
                       : "dark:text-white text-black"
-                  } block py-5 text-[18px] px-6 font-Poppins font-[400]`}
+                  } block py-5 text-[18px] px-6 font-Poppins font-[400] cursor-pointer`}
                 >
-                  {i.name}
+                  {item.name}
                 </span>
               </Link>
             ))}

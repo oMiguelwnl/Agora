@@ -14,7 +14,7 @@ const ChangePassword: FC<Props> = (props) => {
   const passwordChangeHandler = async (e: any) => {
     e.preventDefault();
     if (newPassword !== confirmPassword) {
-      toast.error("Passwords do not match");
+      toast.error("As senhas não coincidem");
     } else {
       await updatePassword({ oldPassword, newPassword });
     }
@@ -22,7 +22,7 @@ const ChangePassword: FC<Props> = (props) => {
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success("Password changed successfully");
+      toast.success("Ocorreu um erro ao atualizar a senha");
     }
     if (error) {
       if ("data" in error) {
@@ -35,7 +35,7 @@ const ChangePassword: FC<Props> = (props) => {
   return (
     <div className="w-full pl-7 px-2 800px:px-5 800px:pl-0">
       <h1 className="block text-[25px] 800px:text-[30px] font-Poppins text-center font-[500] text-black dark:text-[#fff] pb-2">
-        Change Password
+        Alterar Senha
       </h1>
       <div className="w-full">
         <form
@@ -45,7 +45,7 @@ const ChangePassword: FC<Props> = (props) => {
         >
           <div className=" w-[100%] 800px:w-[60%] mt-5">
             <label className="block pb-2 text-black dark:text-[#fff]">
-              Enter your old password
+              Digite sua senha antiga
             </label>
             <input
               type="password"
@@ -57,7 +57,7 @@ const ChangePassword: FC<Props> = (props) => {
           </div>
           <div className=" w-[100%] 800px:w-[60%] mt-2">
             <label className="block pb-2 text-black dark:text-[#fff]">
-              Enter your new password
+              Digite sua nova senha
             </label>
             <input
               type="password"
@@ -69,7 +69,7 @@ const ChangePassword: FC<Props> = (props) => {
           </div>
           <div className=" w-[100%] 800px:w-[60%] mt-2">
             <label className="block pb-2 text-black dark:text-[#fff]">
-              Enter your confirm password
+              Confirme sua nova senha
             </label>
             <input
               type="password"

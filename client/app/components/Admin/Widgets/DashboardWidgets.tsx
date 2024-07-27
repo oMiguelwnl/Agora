@@ -100,20 +100,20 @@ const DashboardWidgets: FC<Props> = ({ open }) => {
   return (
     <div className="mt-[30px] min-h-screen">
       <div className="grid grid-cols-[75%,25%]">
-        <div className="p-8 ">
+        <div className="p-8">
           <UserAnalytics isDashboard={true} />
         </div>
 
         <div className="pt-[80px] pr-8">
           <div className="w-full dark:bg-[#111C43] rounded-sm shadow">
             <div className="flex items-center p-5 justify-between">
-              <div className="">
+              <div>
                 <BiBorderLeft className="dark:text-[#45CBA0] text-[#000] text-[30px]" />
                 <h5 className="pt-2 font-Poppins dark:text-[#fff] text-black text-[20px]">
                   {ordersComparePercentage?.currentMonth}
                 </h5>
                 <h5 className="py-2 font-Poppins dark:text-[#45CBA0] text-black text-[20px] font-[400]">
-                  Sales Obtained
+                  Vendas Obtidas
                 </h5>
               </div>
               <div>
@@ -134,13 +134,13 @@ const DashboardWidgets: FC<Props> = ({ open }) => {
 
           <div className="w-full dark:bg-[#111C43] rounded-sm shadow my-8">
             <div className="flex items-center p-5 justify-between">
-              <div className="">
+              <div>
                 <PiUsersFourLight className="dark:text-[#45CBA0] text-[#000] text-[30px]" />
                 <h5 className="pt-2 font-Poppins dark:text-[#fff] text-black text-[20px]">
                   {userComparePercentage?.currentMonth}
                 </h5>
                 <h5 className="py-2 font-Poppins dark:text-[#45CBA0] text-black text-[20px] font-[400]">
-                  New Users
+                  Novos Usuários
                 </h5>
               </div>
               <div>
@@ -167,7 +167,7 @@ const DashboardWidgets: FC<Props> = ({ open }) => {
         </div>
         <div className="p-5">
           <h5 className="dark:text-[#fff] text-black text-[20px] font-[400] font-Poppins pb-3">
-            Recent Transactions
+            Transações Recentes
           </h5>
           <AllInvoices isDashboard={true} />
         </div>

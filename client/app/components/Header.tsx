@@ -56,7 +56,7 @@ const Header: FC<Props> = ({ activeItem, setOpen, route, open, setRoute }) => {
       }
       if (data === null) {
         if (isSuccess) {
-          toast.success("Login Successfully");
+          toast.success("Login realizado com sucesso");
         }
       }
       if (data === null && !isLoading && !userData) {
@@ -77,9 +77,7 @@ const Header: FC<Props> = ({ activeItem, setOpen, route, open, setRoute }) => {
 
   const handleClose = (e: any) => {
     if (e.target.id === "screen") {
-      {
-        setOpenSidebar(false);
-      }
+      setOpenSidebar(false);
     }
   };
 

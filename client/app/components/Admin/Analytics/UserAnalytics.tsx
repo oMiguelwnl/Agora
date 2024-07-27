@@ -43,11 +43,11 @@ const UserAnalytics = ({ isDashboard }: Props) => {
                 isDashboard && "!text-[20px]"
               } px-5 !text-start`}
             >
-              Users Analytics
+              Análise de Usuários
             </h1>
             {!isDashboard && (
               <p className={`${styles.label} px-5`}>
-                Last 12 months analytics data{" "}
+                Dados de análise dos últimos 12 meses
               </p>
             )}
           </div>

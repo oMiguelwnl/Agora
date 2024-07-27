@@ -21,9 +21,9 @@ type Props = {
 
 const schema = Yup.object().shape({
   email: Yup.string()
-    .email("Invalid email!")
-    .required("Please enter your email!"),
-  password: Yup.string().required("Please enter your password!").min(6),
+    .email("Email inválido!")
+    .required("Por favor, insira seu email!"),
+  password: Yup.string().required("Por favor, insira sua senha!").min(6),
 });
 
 const Login: FC<Props> = ({ setRoute, setOpen, refetch }) => {
@@ -39,7 +39,7 @@ const Login: FC<Props> = ({ setRoute, setOpen, refetch }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success("Login Successfully!");
+      toast.success("Login realizado com sucesso!");
       setOpen(false);
       refetch();
     }
@@ -55,10 +55,10 @@ const Login: FC<Props> = ({ setRoute, setOpen, refetch }) => {
 
   return (
     <div className="w-full">
-      <h1 className={`${styles.title}`}>Login with Ágora</h1>
+      <h1 className={styles.title}>Faça login com Ágora</h1>
       <form onSubmit={handleSubmit}>
-        <label className={`${styles.label}`} htmlFor="email">
-          Enter your Email
+        <label className={styles.label} htmlFor="email">
+          Insira seu Email
         </label>
         <input
           type="email"
@@ -75,8 +75,8 @@ const Login: FC<Props> = ({ setRoute, setOpen, refetch }) => {
           <span className="text-red-500 pt-2 block">{errors.email}</span>
         )}
         <div className="w-full mt-5 relative mb-1">
-          <label className={`${styles.label}`} htmlFor="email">
-            Enter your password
+          <label className={styles.label} htmlFor="password">
+            Insira sua senha
           </label>
           <input
             type={!show ? "password" : "text"}
@@ -84,7 +84,7 @@ const Login: FC<Props> = ({ setRoute, setOpen, refetch }) => {
             value={values.password}
             onChange={handleChange}
             id="password"
-            placeholder="password!@%"
+            placeholder="senha!@%"
             className={`${
               errors.password && touched.password && "border-red-500"
             } ${styles.input}`}
@@ -109,11 +109,11 @@ const Login: FC<Props> = ({ setRoute, setOpen, refetch }) => {
           )}
         </div>
         <div className="w-full mt-5">
-          <input type="submit" value="Login" className={`${styles.button}`} />
+          <input type="submit" value="Entrar" className={styles.button} />
         </div>
         <br />
         <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">
-          Or join with
+          Ou entre com
         </h5>
         <div className="flex items-center justify-center my-3">
           <FcGoogle
@@ -130,12 +130,12 @@ const Login: FC<Props> = ({ setRoute, setOpen, refetch }) => {
           />
         </div>
         <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">
-          Not have any account?{" "}
+          Não tem uma conta?{" "}
           <span
             className="text-[#2190ff] pl-1 cursor-pointer"
             onClick={() => setRoute("Sign-Up")}
           >
-            Sign up
+            Cadastre-se
           </span>
         </h5>
       </form>

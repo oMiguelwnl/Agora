@@ -88,7 +88,7 @@ const Profile: FC<Props> = ({ user }) => {
           </div>
           {courses.length === 0 && (
             <h1 className="text-center text-[18px] font-Poppins dark:text-white text-black">
-              You don&apos;t have any purchased courses!
+              Você não tem nenhum curso adquirido!
             </h1>
           )}
         </div>

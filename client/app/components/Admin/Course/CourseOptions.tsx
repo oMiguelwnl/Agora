@@ -8,15 +8,15 @@ type Props = {
 
 const CourseOptions: FC<Props> = ({ active, setActive }) => {
   const options = [
-    "Course Information",
-    "Course Options",
-    "Course Content",
-    "Course Preview",
+    "Informações do Curso",
+    "Opções do Curso",
+    "Conteúdo do Curso",
+    "Pré-visualização do Curso",
   ];
   return (
     <div>
       {options.map((option: any, index: number) => (
-        <div key={index} className={`w-full flex py-5`}>
+        <div key={index} className="w-full flex py-5">
           <div
             className={`w-[35px] h-[35px] rounded-full flex items-center justify-center ${
               active + 1 > index ? "bg-blue-500" : "bg-[#384766]"

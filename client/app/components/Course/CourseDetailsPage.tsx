@@ -53,7 +53,7 @@ const CourseDetailsPage = ({ id }: Props) => {
           <Heading
             title={data?.course?.name + " - Ágora"}
             description={
-              "Ágora is a programming community which is developed by Miguel Rafael for helping programmers"
+              "Ágora é uma comunidade de programação desenvolvida por Miguel Rafael para ajudar programadores."
             }
             keywords={data?.course?.tags}
           />

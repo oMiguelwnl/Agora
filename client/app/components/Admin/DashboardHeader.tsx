@@ -86,7 +86,7 @@ const DashboardHeader: FC<Props> = ({ open, setOpen }) => {
                     className="text-black dark:text-white cursor-pointer"
                     onClick={() => handleNotificationStatusChange(item._id)}
                   >
-                    Mark as read
+                    Marcar como lido
                   </p>
                 </div>
                 <p className="px-2 text-black dark:text-white">

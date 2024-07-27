@@ -27,7 +27,7 @@ const EditCourse: FC<Props> = ({ id }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success("Course Updated successfully");
+      toast.success("Curso atualizado com sucesso");
       redirect("/admin/courses");
     }
     if (error) {
@@ -77,7 +77,7 @@ const EditCourse: FC<Props> = ({ id }) => {
       videoUrl: "",
       title: "",
       description: "",
-      videoSection: "Untitled Section",
+      videoSection: "Seção Sem Título",
       links: [
         {
           title: "",

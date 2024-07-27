@@ -34,10 +34,10 @@ const CourseAnalytics = (props: Props) => {
         <div className="h-screen">
           <div className="mt-[50px]">
             <h1 className={`${styles.title} px-5 !text-start`}>
-              Courses Analytics
+              Análise de Cursos
             </h1>
             <p className={`${styles.label} px-5`}>
-              Last 12 months analytics data{" "}
+              Dados de análise dos últimos 12 meses
             </p>
           </div>
 

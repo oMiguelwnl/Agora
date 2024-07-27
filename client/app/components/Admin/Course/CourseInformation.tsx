@@ -74,30 +74,29 @@ const CourseInformation: FC<Props> = ({
     <div className="w-[80%] m-auto mt-24">
       <form onSubmit={handleSubmit} className={`${styles.label}`}>
         <div>
-          <label htmlFor="">Course Name</label>
+          <label htmlFor="name">Nome do Curso</label>
           <input
-            type="name"
-            name=""
+            type="text"
+            name="name"
             required
             value={courseInfo.name}
             onChange={(e: any) =>
               setCourseInfo({ ...courseInfo, name: e.target.value })
             }
             id="name"
-            placeholder="MERN stack LMS platform with next 13"
-            className={`
-            ${styles.input}`}
+            placeholder="Plataforma LMS com stack MERN usando Next 13"
+            className={`${styles.input}`}
           />
         </div>
         <br />
         <div className="mb-5">
-          <label className={`${styles.label}`}>Course Description</label>
+          <label className={`${styles.label}`}>Descrição do Curso</label>
           <textarea
-            name=""
-            id=""
+            name="description"
+            id="description"
             cols={30}
             rows={8}
-            placeholder="Write something amazing..."
+            placeholder="Escreva algo incrível..."
             className={`${styles.input} !h-min !py-2`}
             value={courseInfo.description}
             onChange={(e: any) =>
@@ -108,10 +107,10 @@ const CourseInformation: FC<Props> = ({
         <br />
         <div className="w-full flex justify-between">
           <div className="w-[45%]">
-            <label className={`${styles.label}`}>Course Price</label>
+            <label className={`${styles.label}`}>Preço do Curso</label>
             <input
               type="number"
-              name=""
+              name="price"
               required
               value={courseInfo.price}
               onChange={(e: any) =>
@@ -119,63 +118,58 @@ const CourseInformation: FC<Props> = ({
               }
               id="price"
               placeholder="29"
-              className={`
-            ${styles.input}`}
+              className={`${styles.input}`}
             />
           </div>
           <div className="w-[50%]">
             <label className={`${styles.label} w-[50%]`}>
-              Estimated Price (optional)
+              Preço Estimado (opcional)
             </label>
             <input
               type="number"
-              name=""
+              name="estimatedPrice"
               value={courseInfo.estimatedPrice}
               onChange={(e: any) =>
                 setCourseInfo({ ...courseInfo, estimatedPrice: e.target.value })
               }
-              id="price"
+              id="estimatedPrice"
               placeholder="79"
-              className={`
-            ${styles.input}`}
+              className={`${styles.input}`}
             />
           </div>
         </div>
         <br />
         <div className="w-full flex justify-between">
           <div className="w-[45%]">
-            <label className={`${styles.label}`} htmlFor="email">
-              Course Tags
-            </label>
+            <label className={`${styles.label}`}>Tags do Curso</label>
             <input
               type="text"
               required
-              name=""
+              name="tags"
               value={courseInfo.tags}
               onChange={(e: any) =>
                 setCourseInfo({ ...courseInfo, tags: e.target.value })
               }
               id="tags"
               placeholder="MERN,Next 13,Socket io,tailwind css,LMS"
-              className={`
-            ${styles.input}`}
+              className={`${styles.input}`}
             />
           </div>
           <div className="w-[50%]">
             <label className={`${styles.label} w-[50%]`}>
-              Course Categories
+              Categorias do Curso
             </label>
             <select
-              name=""
-              id=""
+              name="categories"
+              id="categories"
               className={`${styles.input}`}
-              value={courseInfo.category}
+              value={courseInfo.categories}
               onChange={(e: any) =>
                 setCourseInfo({ ...courseInfo, categories: e.target.value })
               }
             >
               <option className="dark:bg-[#000] text-[#fff]" value="">
-                Select Category
+                Selecione a Categoria
               </option>
               {categories &&
                 categories.map((item: any) => (
@@ -193,35 +187,35 @@ const CourseInformation: FC<Props> = ({
         <br />
         <div className="w-full flex justify-between">
           <div className="w-[45%]">
-            <label className={`${styles.label}`}>Course Level</label>
+            <label className={`${styles.label}`}>Nível do Curso</label>
             <input
               type="text"
-              name=""
+              name="level"
               value={courseInfo.level}
               required
               onChange={(e: any) =>
                 setCourseInfo({ ...courseInfo, level: e.target.value })
               }
               id="level"
-              placeholder="Beginner/Intermediate/Expert"
-              className={`
-            ${styles.input}`}
+              placeholder="Iniciante/Intermediário/Avançado"
+              className={`${styles.input}`}
             />
           </div>
           <div className="w-[50%]">
-            <label className={`${styles.label} w-[50%]`}>Demo Url</label>
+            <label className={`${styles.label} w-[50%]`}>
+              URL de Demonstração
+            </label>
             <input
               type="text"
-              name=""
+              name="demoUrl"
               required
               value={courseInfo.demoUrl}
               onChange={(e: any) =>
                 setCourseInfo({ ...courseInfo, demoUrl: e.target.value })
               }
               id="demoUrl"
-              placeholder="Enter Demo Url"
-              className={`
-            ${styles.input}`}
+              placeholder="Insira a URL de Demonstração"
+              className={`${styles.input}`}
             />
           </div>
         </div>
@@ -246,12 +240,12 @@ const CourseInformation: FC<Props> = ({
             {courseInfo.thumbnail ? (
               <img
                 src={courseInfo.thumbnail}
-                alt=""
+                alt="Thumbnail"
                 className="max-h-full w-full object-cover"
               />
             ) : (
               <span className="text-black dark:text-white">
-                Drag and drop your thumbnail here or click to browse
+                Arraste e solte sua miniatura aqui ou clique para procurar
               </span>
             )}
           </label>
@@ -260,7 +254,7 @@ const CourseInformation: FC<Props> = ({
         <div className="w-full flex items-center justify-end">
           <input
             type="submit"
-            value="Next"
+            value="Próximo"
             className="w-full 800px:w-[180px] h-[40px] bg-[#37a39a] text-center text-[#fff] rounded mt-8 cursor-pointer"
           />
         </div>

@@ -43,7 +43,7 @@ const ProfileInfo: FC<Props> = ({ avatar, user }) => {
       console.log(error);
     }
     if (success) {
-      toast.success("Profile updated successfully!");
+      toast.success("Perfil atualizado com sucesso!");
       setLoadUser(true);
     }
   }, [isSuccess, error, success, updateError]);
@@ -89,7 +89,7 @@ const ProfileInfo: FC<Props> = ({ avatar, user }) => {
         <form onSubmit={handleSubmit}>
           <div className="800px:w-[50%] m-auto block pb-4">
             <div className="w-[100%]">
-              <label className="block pb-2">Full Name</label>
+              <label className="block pb-2">Nome Completo</label>
               <input
                 type="text"
                 className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
@@ -99,7 +99,7 @@ const ProfileInfo: FC<Props> = ({ avatar, user }) => {
               />
             </div>
             <div className="w-[100%] pt-2">
-              <label className="block pb-2">Email Address</label>
+              <label className="block pb-2">Endereço de Email</label>
               <input
                 type="text"
                 readOnly

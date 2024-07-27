@@ -139,7 +139,7 @@ const Sidebar = () => {
             <Box mb="25px">
               <Box display="flex" justifyContent="center" alignItems="center">
                 <Image
-                  alt="profile-user"
+                  alt="perfil-usuario"
                   width={100}
                   height={100}
                   src={user.avatar ? user.avatar.url : avatarDefault}
@@ -171,7 +171,7 @@ const Sidebar = () => {
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
-              title="Dashboard"
+              title="Painel"
               to="/admin"
               icon={<HomeOutlinedIcon />}
               selected={selected}
@@ -186,7 +186,7 @@ const Sidebar = () => {
               {!isCollapsed && "Data"}
             </Typography>
             <Item
-              title="Users"
+              title="Usuários"
               to="/admin/users"
               icon={<GroupsIcon />}
               selected={selected}
@@ -194,7 +194,7 @@ const Sidebar = () => {
             />
 
             <Item
-              title="Invoices"
+              title="Faturas"
               to="/admin/invoices"
               icon={<ReceiptOutlinedIcon />}
               selected={selected}
@@ -209,14 +209,14 @@ const Sidebar = () => {
               {!isCollapsed && "Content"}
             </Typography>
             <Item
-              title="Create Course"
+              title="Criar Curso"
               to="/admin/create-course"
               icon={<VideoCallIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Live Courses"
+              title="Cursos Ao Vivo"
               to="/admin/courses"
               icon={<OndemandVideoIcon />}
               selected={selected}
@@ -245,7 +245,7 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Categories"
+              title="Categorias"
               to="/admin/categories"
               icon={<WysiwygIcon />}
               selected={selected}
@@ -260,7 +260,7 @@ const Sidebar = () => {
               {!isCollapsed && "Controllers"}
             </Typography>
             <Item
-              title="Manage Team"
+              title="Gerenciar Equipe"
               to="/admin/team"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
@@ -275,14 +275,14 @@ const Sidebar = () => {
               {!isCollapsed && "Analytics"}
             </Typography>
             <Item
-              title="Courses Analytics"
+              title="Análise de Cursos"
               to="/admin/courses-analytics"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Orders Analytics"
+              title="Análise de Pedidos"
               to="/admin/orders-analytics"
               icon={<MapOutlinedIcon />}
               selected={selected}
@@ -290,7 +290,7 @@ const Sidebar = () => {
             />
 
             <Item
-              title="Users Analytics"
+              title="Análise de Usuários"
               to="/admin/users-analytics"
               icon={<ManageHistoryIcon />}
               selected={selected}
@@ -306,7 +306,7 @@ const Sidebar = () => {
             </Typography>
             <div onClick={logoutHandler}>
               <Item
-                title="Logout"
+                title="Sair"
                 to="/"
                 icon={<ExitToAppIcon />}
                 selected={selected}

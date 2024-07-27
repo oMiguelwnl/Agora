@@ -9,44 +9,44 @@ export const reviews = [
   {
     name: "Gene Bates",
     avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-    profession: "Student | Cambridge university",
+    profession: "Estudante | Universidade de Cambridge",
     comment:
-      "I had the pleasure of exploring E-learning, a website that provides an extensive range of courses on various tech-related topics. I was thoroughly impressed with my experience, as the website offers a comprehensive selection of courses that cater to different skill levels and interests. If you're looking to enhance your knowledge and skills in the tech industry, I highly recommend checking out E-learning!",
+      "Tive o prazer de explorar o Ágora, um site que oferece uma extensa gama de cursos sobre vários tópicos relacionados a tecnologia. Fiquei profundamente impressionado com minha experiência, pois o site oferece uma seleção abrangente de cursos que atendem a diferentes níveis de habilidade e interesses. Se você está procurando aprimorar seu conhecimento e habilidades na indústria de tecnologia, recomendo muito conferir o Ágora!",
   },
   {
     name: "Verna Santos",
     avatar: "https://randomuser.me/api/portraits/women/1.jpg",
-    profession: "Full stack developer | Quarter ltd.",
+    profession: "Desenvolvedora Full Stack | Quarter Ltd.",
     comment:
-      "Thanks for your amazing programming tutorial channel! Your teaching style is outstanding, and the quality of your tutorials is top-notch. Your ability to break down complex topics into manageable parts, and cover diverse programming languages and topics is truly impressive. The practical applications and real-world examples you incorporate reinforce the theoretical knowledge and provide valuable insights. Your engagement with the audience fosters a supportive learning environment. Thank you for your dedication, expertise, and passion for teaching programming, and keep up the fantastic work!",
+      "Obrigado pelo seu incrível canal de tutoriais de programação! Seu estilo de ensino é excepcional, e a qualidade dos seus tutoriais é de primeira linha. Sua capacidade de dividir tópicos complexos em partes gerenciáveis e cobrir diversas linguagens de programação e tópicos é verdadeiramente impressionante. As aplicações práticas e exemplos do mundo real que você incorpora reforçam o conhecimento teórico e fornecem insights valiosos. Seu envolvimento com o público promove um ambiente de aprendizado colaborativo. Agradeço pela sua dedicação, expertise e paixão pelo ensino de programação, e continue com o trabalho fantástico!",
   },
   {
     name: "Jay Gibbs",
     avatar: "https://randomuser.me/api/portraits/men/2.jpg",
-    profession: "computer systems engineering student | Zimbabwe",
+    profession: "Estudante de Engenharia de Sistemas Computacionais | Zimbábue",
     comment:
-      "Thanks for your amazing programming tutorial channel! Your teaching style is outstanding, and the quality of your tutorials is top-notch. Your ability to break down complex topics into manageable parts, and cover diverse programming languages and topics is truly impressive. The practical applications and real-world examples you incorporate reinforce the theoretical knowledge and provide valuable insights. Your engagement with the audience fosters a supportive learning environment. Thank you for your dedication, expertise, and passion for teaching programming, and keep up the fantastic work!",
+      "Obrigado pelo seu incrível canal de tutoriais de programação! Seu estilo de ensino é excepcional, e a qualidade dos seus tutoriais é de primeira linha. Sua capacidade de dividir tópicos complexos em partes gerenciáveis e cobrir diversas linguagens de programação e tópicos é verdadeiramente impressionante. As aplicações práticas e exemplos do mundo real que você incorpora reforçam o conhecimento teórico e fornecem insights valiosos. Seu envolvimento com o público promove um ambiente de aprendizado colaborativo. Agradeço pela sua dedicação, expertise e paixão pelo ensino de programação, e continue com o trabalho fantástico!",
   },
   {
     name: "Mina Davidson",
     avatar: "https://randomuser.me/api/portraits/women/2.jpg",
-    profession: "Junior Web Developer | Indonesia",
+    profession: "Desenvolvedora Web Júnior | Indonésia",
     comment:
-      "I had the pleasure of exploring E-learning, a website that provides an extensive range of courses on various tech-related topics. I was thoroughly impressed with my experience",
+      "Tive o prazer de explorar o Ágora, um site que oferece uma extensa gama de cursos sobre vários tópicos relacionados a tecnologia. Fiquei profundamente impressionado com minha experiência.",
   },
   {
     name: "Rosemary Smith",
     avatar: "https://randomuser.me/api/portraits/women/3.jpg",
-    profession: "Full stack web developer | Algeria",
+    profession: "Desenvolvedora Full Stack | Argélia",
     comment:
-      "Your content is very special. The thing I liked the most is that the videos are so long, which means they cover everything in details. for that any person had beginner-level can complete an integrated project when he watches the videos. Thank you very much. Im very excited for the next videos Keep doing this amazing work",
+      "Seu conteúdo é muito especial. O que eu mais gostei é que os vídeos são tão longos, o que significa que cobrem tudo em detalhes. Por isso, qualquer pessoa com nível iniciante pode completar um projeto integrado ao assistir aos vídeos. Muito obrigado. Estou muito animada para os próximos vídeos. Continue fazendo esse trabalho incrível!",
   },
   {
     name: "Laura Mckenzie",
     avatar: "https://randomuser.me/api/portraits/women/4.jpg",
-    profession: "Full stack web developer | Canada",
+    profession: "Desenvolvedora Full Stack | Canadá",
     comment:
-      "Join E-learning! E-learning focuses on practical applications rather than just teaching the theory behind programming languages or frameworks. I took a lesson on creating a web marketplace using React JS, and it was very helpful in teaching me the different stages involved in creating a project from start to finish. Overall, I highly recommend E-learning to anyone looking to improve their programming skills and build practical projects. E-learning is a great resource that will help you take your skills to the next level.",
+      "Junte-se ao Ágora! O Ágora foca em aplicações práticas, em vez de apenas ensinar a teoria por trás das linguagens de programação ou frameworks. Fiz uma aula sobre a criação de um marketplace web usando React JS, e foi muito útil para me ensinar as diferentes etapas envolvidas na criação de um projeto do início ao fim. No geral, recomendo muito o Ágora para quem deseja melhorar suas habilidades de programação e construir projetos práticos. O Ágora é um ótimo recurso que ajudará você a levar suas habilidades para o próximo nível.",
   },
 ];
 
@@ -64,8 +64,9 @@ const Reviews = (props: Props) => {
         </div>
         <div className="800px:w-[50%] w-full">
           <h3 className={`${styles.title} 800px:!text-[40px]`}>
-            Our Students Are <span className="text-gradient">Our Strength</span>{" "}
-            <br /> See What They Say About Us
+            Nossos Estudantes São{" "}
+            <span className="text-gradient">Nossa Força</span> <br /> Veja o que
+            Eles Dizem Sobre Nós
           </h3>
           <br />
           <p className={styles.label}>

@@ -26,13 +26,13 @@ const EditFaq = (props: Props) => {
       setQuestions(data.layout?.faq);
     }
     if (layoutSuccess) {
-      toast.success("FAQ updated successfully");
+      toast.success("FAQ atualizado com sucesso");
     }
 
     if (error) {
       if ("data" in error) {
         const errorData = error as any;
-        toast.error(errorData?.data?.message);
+        toast.error(errorData?.data?.message || "Erro ao atualizar FAQ");
       }
     }
   }, [data, layoutSuccess, error]);
@@ -114,7 +114,7 @@ const EditFaq = (props: Props) => {
                         onChange={(e: any) =>
                           handleQuestionChange(q._id, e.target.value)
                         }
-                        placeholder={"Add your question..."}
+                        placeholder={"Adicione sua pergunta..."}
                       />
 
                       <span className="ml-6 flex-shrink-0">
@@ -134,7 +134,7 @@ const EditFaq = (props: Props) => {
                         onChange={(e: any) =>
                           handleAnswerChange(q._id, e.target.value)
                         }
-                        placeholder={"Add your answer..."}
+                        placeholder={"Adicione sua resposta..."}
                       />
                       <span className="ml-6 flex-shrink-0">
                         <AiOutlineDelete
@@ -177,7 +177,7 @@ const EditFaq = (props: Props) => {
                 : handleEdit
             }
           >
-            Save
+            Salvar
           </div>
         </div>
       )}
