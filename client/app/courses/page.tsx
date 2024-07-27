@@ -1,7 +1,6 @@
 "use client";
-
-import { useGetUsersAllCoursesQuery } from "../../redux/features/courses/coursesApi";
-import { useGetHeroDataQuery } from "../../redux/features/layout/layoutApi";
+import { useGetUsersAllCoursesQuery } from "@/redux/features/courses/coursesApi";
+import { useGetHeroDataQuery } from "@/redux/features/layout/layoutApi";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState, Suspense } from "react";
 import Loader from "../components/Loader/Loader";
@@ -95,8 +94,8 @@ const CoursesComponent = () => {
                 className={`${styles.label} justify-center min-h-[50vh] flex items-center`}
               >
                 {search
-                  ? "No courses found!"
-                  : "No courses found in this category. Please try another one!"}
+                  ? "Nenhum curso encontrado!"
+                  : "Nenhum curso encontrado nesta categoria. Por favor, tente outro!"}
               </p>
             )}
             <br />

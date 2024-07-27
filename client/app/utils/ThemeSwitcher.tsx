@@ -8,15 +8,14 @@ export const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  
   useEffect(() => setMounted(true), []);
-  
+
   if (!mounted) {
     return null;
   }
 
   return (
-    <div className="items-center flex justify-center mx-4">
+    <div className="flex items-center justify-center mx-4">
       {theme === "light" ? (
         <BiMoon
           className="cursor-pointer"
@@ -26,8 +25,8 @@ export const ThemeSwitcher = () => {
         />
       ) : (
         <BiSun
-          className="cursor-pointer"
           size={25}
+          className="cursor-pointer"
           onClick={() => setTheme("light")}
         />
       )}
